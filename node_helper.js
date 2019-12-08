@@ -20,7 +20,7 @@ module.exports = NodeHelper.create({
 			};
 			http.get(options, function (response) {
 				var pngFiles = payload.mmDir + 'modules/mmm-weatherchart/cache/*.png';
-				del([pngFiles]);
+				del.sync([pngFiles]);
 				var cachedFile = 'modules/mmm-weatherchart/cache/map-' + new Date().getTime() + '.png';
 				var newImage = fs.createWriteStream(payload.mmDir + cachedFile);
 				response.on('data', function(chunk){
